@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数智时代广告行业人才需求深度调查问卷</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .progress-container {
+            background: #f1f8ff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            flex-grow: 1;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 25px;
+            background: #3498db;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 16px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+            margin-left: 4px;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        
+        .option:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .option input {
+            margin-right: 12px;
+            margin-top: 3px;
+        }
+        
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .matrix-table th, .matrix-table td {
+            padding: 14px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .matrix-table th {
+            background-color: #f1f8ff;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .matrix-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .matrix-table tr:hover {
+            background-color: #f1f8ff;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            resize: vertical;
+            min-height: 120px;
+            font-size: 15px;
+            transition: border 0.3s;
+        }
+        
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #27ae60, #219653);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .question-counter {
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .matrix-table {
+                font-size: 13px;
+            }
+            
+            .matrix-table th, .matrix-table td {
+                padding: 8px 4px;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>数智时代广告行业人才需求深度调查问卷</h1>
+            <p>感谢您参与本次调查！本问卷旨在深入了解AI时代广告行业人才需求变化及培养模式优化方向，预计填写时间15-20分钟。</p>
+        </div>
+        
+        <div class="progress-container">
+            <span id="progress-text">第1部分/共6部分</span>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <span id="progress-percent">0%</span>
+        </div>
+        
+        <div class="form-container">
+            <form id="survey-form">
+                <!-- 第一部分：基本信息与行业背景 -->
+                <div class="section active" id="section1">
+                    <h2 class="section-title">第一部分：基本信息与行业背景</h2>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">1</span>您所在的公司类型是？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="A" required> A. 国际4A广告公司
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="B"> B. 本土大型广告集团
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="C"> C. 独立/专精型创意热店
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="D"> D. 数字营销机构
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="E"> E. 媒介代理公司
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="F"> F. 企业/品牌方市场部
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="G"> G. 其他 (请简要说明)
+                                <input type="text" name="q1_other" style="margin-left: 10px; padding: 5px; width: 200px;">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">2</span>您目前的职位层级是？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q2" value="A" required> A. 初级员工（执行岗）
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="B"> B. 中级员工（资深专员、项目经理）
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="C"> C. 高级员工（总监、部门负责人）
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="D"> D. 公司管理层（合伙人、总经理等）
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">3</span>您所在的核心业务部门是？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q3" value="A" required> A. 创意与内容
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="B"> B. 策略与策划
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="C"> C. 客户管理
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="D"> D. 媒介投放与采购
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="E"> E. 数据与技术
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="F"> F. 其他 (请简要说明)
+                                <input type="text" name="q3_other" style="margin-left: 10px; padding: 5px; width: 200px;">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">4</span>在您看来，贵公司在应用AI技术方面处于哪个阶段？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q4" value="A" required> A. 积极探索与试验阶段
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="B"> B. 部分业务已规模化应用
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="C"> C. 全面整合，成为核心工作流
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="D"> D. 尚未系统化开展
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">5</span>您从事广告行业工作已有多少年？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q5" value="A" required> A. 少于2年
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="B"> B. 2-5年
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="C"> C. 6-10年
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="D"> D. 10年以上
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="button" class="nav-btn" id="next1">下一部分</button>
+                    </div>
+                </div>
+                
+                <!-- 第二部分：技术冲击与岗位变革 -->
+                <div class="section" id="section2">
+                    <h2 class="section-title">第二部分：技术冲击与岗位变革</h2>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">6</span>请评估AI技术对以下广告业务环节的影响程度。</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>工作环节</th>
+                                    <th>极大优化</th>
+                                    <th>有所优化</th>
+                                    <th>基本无影响</th>
+                                    <th>有所挑战</th>
+                                    <th>极大挑战</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>创意构思与脑暴</td>
+                                    <td><input type="radio" name="q6_1" value="5" required></td>
+                                    <td><input type="radio" name="q6_1" value="4"></td>
+                                    <td><input type="radio" name="q6_1" value="3"></td>
+                                    <td><input type="radio" name="q6_1" value="2"></td>
+                                    <td><input type="radio" name="q6_1" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>文案撰写与优化</td>
+                                    <td><input type="radio" name="q6_2" value="5" required></td>
+                                    <td><input type="radio" name="q6_2" value="4"></td>
+                                    <td><input type="radio" name="q6_2" value="3"></td>
+                                    <td><input type="radio" name="q6_2" value="2"></td>
+                                    <td><input type="radio" name="q6_2" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>视觉设计（图像/视频）</td>
+                                    <td><input type="radio" name="q6_3" value="5" required></td>
+                                    <td><input type="radio" name="q6_3" value="4"></td>
+                                    <td><input type="radio" name="q6_3" value="3"></td>
+                                    <td><input type="radio" name="q6_3" value="2"></td>
+                                    <td><input type="radio" name="q6_3" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>消费者洞察与用户画像</td>
+                                    <td><input type="radio" name="q6_4" value="5" required></td>
+                                    <td><input type="radio" name="q6_4" value="4"></td>
+                                    <td><input type="radio" name="q6_4" value="3"></td>
+                                    <td><input type="radio" name="q6_4" value="2"></td>
+                                    <td><input type="radio" name="q6_4" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>媒介策略与预算分配</td>
+                                    <td><input type="radio" name="q6_5" value="5" required></td>
+                                    <td><input type="radio" name="q6_5" value="4"></td>
+                                    <td><input type="radio" name="q6_5" value="3"></td>
+                                    <td><input type="radio" name="q6_5" value="2"></td>
+                                    <td><input type="radio" name="q6_5" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">7</span>据您观察，过去两年中，您所在部门是否出现了以下变化？</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>变化描述</th>
+                                    <th>是</th>
+                                    <th>否</th>
+                                    <th>不确定</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>新增了与AI/数据相关的岗位</td>
+                                    <td><input type="radio" name="q7_1" value="yes" required></td>
+                                    <td><input type="radio" name="q7_1" value="no"></td>
+                                    <td><input type="radio" name="q7_1" value="unsure"></td>
+                                </tr>
+                                <tr>
+                                    <td>传统岗位的职责描述发生了显著变更</td>
+                                    <td><input type="radio" name="q7_2" value="yes" required></td>
+                                    <td><input type="radio" name="q7_2" value="no"></td>
+                                    <td><input type="radio" name="q7_2" value="unsure"></td>
+                                </tr>
+                                <tr>
+                                    <td>团队组织结构向更敏捷、跨职能的方向调整</td>
+                                    <td><input type="radio" name="q7_3" value="yes" required></td>
+                                    <td><input type="radio" name="q7_3" value="no"></td>
+                                    <td><input type="radio" name="q7_3" value="unsure"></td>
+                                </tr>
+                                <tr>
+                                    <td>因AI工具的应用，基础执行岗位需求减少</td>
+                                    <td><input type="radio" name="q7_4" value="yes" required></td>
+                                    <td><input type="radio" name="q7_4" value="no"></td>
+                                    <td><input type="radio" name="q7_4" value="unsure"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">8</span>您认为，未来3年内，以下哪些岗位的职责内容将发生最剧烈的变革？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="checkbox" name="q8" value="A"> A. 文案
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q8" value="B"> B. 美术指导/设计师
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q8" value="C"> C. 策划/策略
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q8" value="D"> D. 客户执行/客户经理
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q8" value="E"> E. 媒介采购/媒介策划
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q8" value="F"> F. 数据分析师
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">9</span>您认为AI技术在广告行业中的应用，对人才结构产生了怎样的影响？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q9" value="A" required> A. 显著增加了技术型人才需求
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="B"> B. 减少了对基础执行人才的需求
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="C"> C. 催生了复合型人才需求
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="D"> D. 整体人才需求减少
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="E"> E. 影响尚不明显
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">10</span>您所在公司是否已设立专门的AI应用或数字化转型部门？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q10" value="A" required> A. 已设立且运作成熟
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="B"> B. 已设立但仍在探索阶段
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="C"> C. 计划设立但尚未实施
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="D"> D. 暂无设立计划
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="E"> E. 不清楚
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="button" class="nav-btn" id="prev2">上一部分</button>
+                        <button type="button" class="nav-btn" id="next2">下一部分</button>
+                    </div>
+                </div>
+                
+                <!-- 第三部分：核心能力需求评估 -->
+                <div class="section" id="section3">
+                    <h2 class="section-title">第三部分：核心能力需求评估</h2>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">11</span>请对以下人才类型，根据您认为的"未来3年行业需求紧迫性"进行排序。</div>
+                        <div class="options">
+                            <div class="option">
+                                <select name="q11_rank1" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #ddd;">
+                                    <option value="">请选择最紧迫的人才类型</option>
+                                    <option value="A">A. 技术型创意人（精通AIGC）</option>
+                                    <option value="B">B. 数据驱动策略顾问</option>
+                                    <option value="C">C. 智能媒介运营专家</option>
+                                    <option value="D">D. 复合型项目经理（懂技术、策略与管理）</option>
+                                    <option value="E">E. 品牌管理与战略专家</option>
+                                </select>
+                            </div>
+                            <div class="option">
+                                <select name="q11_rank2" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #ddd;">
+                                    <option value="">请选择第二紧迫的人才类型</option>
+                                    <option value="A">A. 技术型创意人（精通AIGC）</option>
+                                    <option value="B">B. 数据驱动策略顾问</option>
+                                    <option value="C">C. 智能媒介运营专家</option>
+                                    <option value="D">D. 复合型项目经理（懂技术、策略与管理）</option>
+                                    <option value="E">E. 品牌管理与战略专家</option>
+                                </select>
+                            </div>
+                            <div class="option">
+                                <select name="q11_rank3" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #ddd;">
+                                    <option value="">请选择第三紧迫的人才类型</option>
+                                    <option value="A">A. 技术型创意人（精通AIGC）</option>
+                                    <option value="B">B. 数据驱动策略顾问</option>
+                                    <option value="C">C. 智能媒介运营专家</option>
+                                    <option value="D">D. 复合型项目经理（懂技术、策略与管理）</option>
+                                    <option value="E">E. 品牌管理与战略专家</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">12</span>请评估您在招聘或团队组建时，对候选人以下"技术应用能力"的看重程度。</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>能力项</th>
+                                    <th>极其看重</th>
+                                    <th>比较看重</th>
+                                    <th>一般</th>
+                                    <th>不太看重</th>
+                                    <th>完全不看重</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AIGC工具用于文案、图像、视频的生成与优化</td>
+                                    <td><input type="radio" name="q12_1" value="5" required></td>
+                                    <td><input type="radio" name="q12_1" value="4"></td>
+                                    <td><input type="radio" name="q12_1" value="3"></td>
+                                    <td><input type="radio" name="q12_1" value="2"></td>
+                                    <td><input type="radio" name="q12_1" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>数据分析工具的使用能力</td>
+                                    <td><input type="radio" name="q12_2" value="5" required></td>
+                                    <td><input type="radio" name="q12_2" value="4"></td>
+                                    <td><input type="radio" name="q12_2" value="3"></td>
+                                    <td><input type="radio" name="q12_2" value="2"></td>
+                                    <td><input type="radio" name="q12_2" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>消费者行为数据的分析与解读能力</td>
+                                    <td><input type="radio" name="q12_3" value="5" required></td>
+                                    <td><input type="radio" name="q12_3" value="4"></td>
+                                    <td><input type="radio" name="q12_3" value="3"></td>
+                                    <td><input type="radio" name="q12_3" value="2"></td>
+                                    <td><input type="radio" name="q12_3" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>程序化广告投放平台操作经验</td>
+                                    <td><input type="radio" name="q12_4" value="5" required></td>
+                                    <td><input type="radio" name="q12_4" value="4"></td>
+                                    <td><input type="radio" name="q12_4" value="3"></td>
+                                    <td><input type="radio" name="q12_4" value="2"></td>
+                                    <td><input type="radio" name="q12_4" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>对AI模型原理的基本理解</td>
+                                    <td><input type="radio" name="q12_5" value="5" required></td>
+                                    <td><input type="radio" name="q12_5" value="4"></td>
+                                    <td><input type="radio" name="q12_5" value="3"></td>
+                                    <td><input type="radio" name="q12_5" value="2"></td>
+                                    <td><input type="radio" name="q12_5" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">13</span>请评估您在招聘或团队组建时，对候选人以下"专业综合素养"的看重程度。</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>能力项</th>
+                                    <th>极其看重</th>
+                                    <th>比较看重</th>
+                                    <th>一般</th>
+                                    <th>不太看重</th>
+                                    <th>完全不看重</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>批判性思维与独立判断力</td>
+                                    <td><input type="radio" name="q13_1" value="5" required></td>
+                                    <td><input type="radio" name="q13_1" value="4"></td>
+                                    <td><input type="radio" name="q13_1" value="3"></td>
+                                    <td><input type="radio" name="q13_1" value="2"></td>
+                                    <td><input type="radio" name="q13_1" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>快速学习与自我迭代能力</td>
+                                    <td><input type="radio" name="q13_2" value="5" required></td>
+                                    <td><input type="radio" name="q13_2" value="4"></td>
+                                    <td><input type="radio" name="q13_2" value="3"></td>
+                                    <td><input type="radio" name="q13_2" value="2"></td>
+                                    <td><input type="radio" name="q13_2" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>跨领域知识融合与创新思维</td>
+                                    <td><input type="radio" name="q13_3" value="5" required></td>
+                                    <td><input type="radio" name="q13_3" value="4"></td>
+                                    <td><input type="radio" name="q13_3" value="3"></td>
+                                    <td><input type="radio" name="q13_3" value="2"></td>
+                                    <td><input type="radio" name="q13_3" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>复杂项目的管理与协同能力</td>
+                                    <td><input type="radio" name="q13_4" value="5" required></td>
+                                    <td><input type="radio" name="q13_4" value="4"></td>
+                                    <td><input type="radio" name="q13_4" value="3"></td>
+                                    <td><input type="radio" name="q13_4" value="2"></td>
+                                    <td><input type="radio" name="q13_4" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>沟通表达与提案能力</td>
+                                    <td><input type="radio" name="q13_5" value="5" required></td>
+                                    <td><input type="radio" name="q13_5" value="4"></td>
+                                    <td><input type="radio" name="q13_5" value="3"></td>
+                                    <td><input type="radio" name="q13_5" value="2"></td>
+                                    <td><input type="radio" name="q13_5" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">14</span>在数智化工作环境中，您认为"人机协作"能力的重要性体现在哪些方面？</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>描述</th>
+                                    <th>非常重要</th>
+                                    <th>重要</th>
+                                    <th>一般</th>
+                                    <th>不重要</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>能对AI提出精准的指令</td>
+                                    <td><input type="radio" name="q14_1" value="4" required></td>
+                                    <td><input type="radio" name="q14_1" value="3"></td>
+                                    <td><input type="radio" name="q14_1" value="2"></td>
+                                    <td><input type="radio" name="q14_1" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>能评估和优化AI输出的成果</td>
+                                    <td><input type="radio" name="q14_2" value="4" required></td>
+                                    <td><input type="radio" name="q14_2" value="3"></td>
+                                    <td><input type="radio" name="q14_2" value="2"></td>
+                                    <td><input type="radio" name="q14_2" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>能将AI工具融入团队工作流</td>
+                                    <td><input type="radio" name="q14_3" value="4" required></td>
+                                    <td><input type="radio" name="q14_3" value="3"></td>
+                                    <td><input type="radio" name="q14_3" value="2"></td>
+                                    <td><input type="radio" name="q14_3" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>能利用AI进行创意激发而非简单替代</td>
+                                    <td><input type="radio" name="q14_4" value="4" required></td>
+                                    <td><input type="radio" name="q14_4" value="3"></td>
+                                    <td><input type="radio" name="q14_4" value="2"></td>
+                                    <td><input type="radio" name="q14_4" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">15</span>与传统广告时代相比，您认为数智化广告人才最重要的特质是什么？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="checkbox" name="q15" value="A"> A. 快速学习与自我迭代能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q15" value="B"> B. 人机协作意识与能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q15" value="C"> C. 数据思维与分析能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q15" value="D"> D. 跨职能团队协作能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q15" value="E"> E. 深刻的商业洞察与策略思考能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q15" value="F"> F. 其他 (请简要说明)
+                                <input type="text" name="q15_other" style="margin-left: 10px; padding: 5px; width: 200px;">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="button" class="nav-btn" id="prev3">上一部分</button>
+                        <button type="button" class="nav-btn" id="next3">下一部分</button>
+                    </div>
+                </div>
+                
+                <!-- 第四部分：当前人才缺口与育人模式反思 -->
+                <div class="section" id="section4">
+                    <h2 class="section-title">第四部分：当前人才缺口与育人模式反思</h2>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">16</span>您认为，当前高校广告专业毕业生在以下哪些方面与行业需求存在显著差距？</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>描述</th>
+                                    <th>差距非常大</th>
+                                    <th>差距较大</th>
+                                    <th>一般</th>
+                                    <th>差距较小</th>
+                                    <th>没有差距</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>前沿技术工具的应用能力</td>
+                                    <td><input type="radio" name="q16_1" value="5" required></td>
+                                    <td><input type="radio" name="q16_1" value="4"></td>
+                                    <td><input type="radio" name="q16_1" value="3"></td>
+                                    <td><input type="radio" name="q16_1" value="2"></td>
+                                    <td><input type="radio" name="q16_1" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>解决真实商业问题的实战经验</td>
+                                    <td><input type="radio" name="q16_2" value="5" required></td>
+                                    <td><input type="radio" name="q16_2" value="4"></td>
+                                    <td><input type="radio" name="q16_2" value="3"></td>
+                                    <td><input type="radio" name="q16_2" value="2"></td>
+                                    <td><input type="radio" name="q16_2" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>数据思维与量化分析能力</td>
+                                    <td><input type="radio" name="q16_3" value="5" required></td>
+                                    <td><input type="radio" name="q16_3" value="4"></td>
+                                    <td><input type="radio" name="q16_3" value="3"></td>
+                                    <td><input type="radio" name="q16_3" value="2"></td>
+                                    <td><input type="radio" name="q16_3" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>策略规划与宏观思考能力</td>
+                                    <td><input type="radio" name="q16_4" value="5" required></td>
+                                    <td><input type="radio" name="q16_4" value="4"></td>
+                                    <td><input type="radio" name="q16_4" value="3"></td>
+                                    <td><input type="radio" name="q16_4" value="2"></td>
+                                    <td><input type="radio" name="q16_4" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>团队协作与项目管理能力</td>
+                                    <td><input type="radio" name="q16_5" value="5" required></td>
+                                    <td><input type="radio" name="q16_5" value="4"></td>
+                                    <td><input type="radio" name="q16_5" value="3"></td>
+                                    <td><input type="radio" name="q16_5" value="2"></td>
+                                    <td><input type="radio" name="q16_5" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">17</span>在您接触过的应届生或实习生中，他们最缺乏的三种意识是？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="checkbox" name="q17" value="A"> A. 商业意识（成本、利润、ROI）
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q17" value="B"> B. 用户/消费者意识
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q17" value="C"> C. 数据意识
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q17" value="D"> D. 技术意识
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q17" value="E"> E. 协作意识
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q17" value="F"> F. 职业伦理意识
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q17" value="G"> G. 迭代与优化意识
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">18</span>您认为，高校现有的广告学课程体系，在以下哪些方面的内容最为薄弱？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="checkbox" name="q18" value="A"> A. 前沿数字营销技术课程
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q18" value="B"> B. 数据分析与统计学课程
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q18" value="C"> C. 商业模式与战略类课程
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q18" value="D"> D. 心理学、社会学等通识课程
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q18" value="E"> E. 项目管理与团队协作课程
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q18" value="F"> F. 商业伦理与AI伦理课程
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">19</span>您认为当前高校广告教育面临的最大挑战是什么？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q19" value="A" required> A. 课程内容滞后于行业发展
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="B"> B. 师资缺乏行业实践经验
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="C"> C. 实践教学资源不足
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="D"> D. 与企业合作不够深入
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="E"> E. 学生创新思维培养不足
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="F"> F. 其他 (请简要说明)
+                                <input type="text" name="q19_other" style="margin-left: 10px; padding: 5px; width: 200px;">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">20</span>您认为高校广告专业毕业生需要多长时间才能适应行业工作需求？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q20" value="A" required> A. 3个月以内
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="B"> B. 3-6个月
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="C"> C. 6-12个月
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="D"> D. 1-2年
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="E"> E. 2年以上
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="button" class="nav-btn" id="prev4">上一部分</button>
+                        <button type="button" class="nav-btn" id="next4">下一部分</button>
+                    </div>
+                </div>
+                
+                <!-- 第五部分：面向未来的育人模式重构 -->
+                <div class="section" id="section5">
+                    <h2 class="section-title">第五部分：面向未来的育人模式重构</h2>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">21</span>您认为，以下高校与企业合作培养人才的方式，其有效性如何？</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>合作方式</th>
+                                    <th>非常有效</th>
+                                    <th>有效</th>
+                                    <th>一般</th>
+                                    <th>无效</th>
+                                    <th>非常无效</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>企业提供真实项目作为课程作业/毕业设计</td>
+                                    <td><input type="radio" name="q21_1" value="5" required></td>
+                                    <td><input type="radio" name="q21_1" value="4"></td>
+                                    <td><input type="radio" name="q21_1" value="3"></td>
+                                    <td><input type="radio" name="q21_1" value="2"></td>
+                                    <td><input type="radio" name="q21_1" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>共建产业学院或特色订单班</td>
+                                    <td><input type="radio" name="q21_2" value="5" required></td>
+                                    <td><input type="radio" name="q21_2" value="4"></td>
+                                    <td><input type="radio" name="q21_2" value="3"></td>
+                                    <td><input type="radio" name="q21_2" value="2"></td>
+                                    <td><input type="radio" name="q21_2" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>高校教师与行业专家共同授课</td>
+                                    <td><input type="radio" name="q21_3" value="5" required></td>
+                                    <td><input type="radio" name="q21_3" value="4"></td>
+                                    <td><input type="radio" name="q21_3" value="3"></td>
+                                    <td><input type="radio" name="q21_3" value="2"></td>
+                                    <td><input type="radio" name="q21_3" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>建立长期、系统化的实习基地</td>
+                                    <td><input type="radio" name="q21_4" value="5" required></td>
+                                    <td><input type="radio" name="q21_4" value="4"></td>
+                                    <td><input type="radio" name="q21_4" value="3"></td>
+                                    <td><input type="radio" name="q21_4" value="2"></td>
+                                    <td><input type="radio" name="q21_4" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>鼓励并组织学生参加行业权威竞赛</td>
+                                    <td><input type="radio" name="q21_5" value="5" required></td>
+                                    <td><input type="radio" name="q21_5" value="4"></td>
+                                    <td><input type="radio" name="q21_5" value="3"></td>
+                                    <td><input type="radio" name="q21_5" value="2"></td>
+                                    <td><input type="radio" name="q21_5" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">22</span>为了适应未来需求，您认为高校广告专业的课程设置应进行怎样的改革？</div>
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>改革方向</th>
+                                    <th>非常必要</th>
+                                    <th>必要</th>
+                                    <th>一般</th>
+                                    <th>不必要</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>增设AIGC应用、智能投放等技术类必修课</td>
+                                    <td><input type="radio" name="q22_1" value="4" required></td>
+                                    <td><input type="radio" name="q22_1" value="3"></td>
+                                    <td><input type="radio" name="q22_1" value="2"></td>
+                                    <td><input type="radio" name="q22_1" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>大幅增加基于真实项目的"项目制学习"比重</td>
+                                    <td><input type="radio" name="q22_2" value="4" required></td>
+                                    <td><input type="radio" name="q22_2" value="3"></td>
+                                    <td><input type="radio" name="q22_2" value="2"></td>
+                                    <td><input type="radio" name="q22_2" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>强化数据思维训练，开设数据分析必修课</td>
+                                    <td><input type="radio" name="q22_3" value="4" required></td>
+                                    <td><input type="radio" name="q22_3" value="3"></td>
+                                    <td><input type="radio" name="q22_3" value="2"></td>
+                                    <td><input type="radio" name="q22_3" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>加强与商学院、计算机学院的跨学科课程合作</td>
+                                    <td><input type="radio" name="q22_4" value="4" required></td>
+                                    <td><input type="radio" name="q22_4" value="3"></td>
+                                    <td><input type="radio" name="q22_4" value="2"></td>
+                                    <td><input type="radio" name="q22_4" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>保留并精深文案、美术等传统核心课程</td>
+                                    <td><input type="radio" name="q22_5" value="4" required></td>
+                                    <td><input type="radio" name="q22_5" value="3"></td>
+                                    <td><input type="radio" name="q22_5" value="2"></td>
+                                    <td><input type="radio" name="q22_5" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">23</span>除了课程改革，您认为高校在哪些方面最需要加强？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="checkbox" name="q23" value="A"> A. 引进具备行业一线经验的教师
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q23" value="B"> B. 更新教学设备与软件（如正版AI工具）
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q23" value="C"> C. 营造鼓励创新、容忍失败的校园文化
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q23" value="D"> D. 加强职业生涯规划与行业认知教育
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q23" value="E"> E. 建立更紧密的产学研合作平台
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q23" value="F"> F. 培养学生的终身学习习惯与能力
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">24</span>您认为高校广告专业应该更加注重培养学生的哪些能力？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="checkbox" name="q24" value="A"> A. 技术应用能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q24" value="B"> B. 数据分析能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q24" value="C"> C. 创意与策略思考能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q24" value="D"> D. 项目管理与团队协作能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q24" value="E"> E. 商业洞察与客户沟通能力
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" name="q24" value="F"> F. 伦理判断与社会责任意识
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title required"><span class="question-counter">25</span>您认为高校广告专业应该采取哪种考核方式更能反映学生的真实能力？</div>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q25" value="A" required> A. 项目制考核（基于真实商业项目）
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q25" value="B"> B. 作品集评估
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q25" value="C"> C. 综合笔试+实践考核
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q25" value="D"> D. 行业专家面试评估
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q25" value="E"> E. 团队项目展示与答辩
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="button" class="nav-btn" id="prev5">上一部分</button>
+                        <button type="button" class="nav-btn" id="next5">下一部分</button>
+                    </div>
+                </div>
+                
+                <!-- 第六部分：开放性与总结性提问 -->
+                <div class="section" id="section6">
+                    <h2 class="section-title">第六部分：开放性与总结性提问</h2>
+                    
+                    <div class="question">
+                        <div class="question-title"><span class="question-counter">26</span>在您看来，面对AI的冲击，广告人最应坚守的、最"不可替代"的核心价值是什么？</div>
+                        <textarea name="q26" placeholder="请在此输入您的观点..."></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title"><span class="question-counter">27</span>请用一句话描述您心目中"面向未来的理想广告人才"画像。</div>
+                        <textarea name="q27" placeholder="请在此输入您的描述..."></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title"><span class="question-counter">28</span>对于构建面向未来的广告专业人才培养体系，您还有哪些具体的意见或建议？</div>
+                        <textarea name="q28" placeholder="请在此输入您的建议..."></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title"><span class="question-counter">29</span>您认为广告行业在未来5年内将面临哪些主要挑战？</div>
+                        <textarea name="q29" placeholder="请在此输入您的观点..."></textarea>
+                    </div>
+                    
+                    <div class="question">
+                        <div class="question-title"><span class="question-counter">30</span>您对本次调查有何其他意见或建议？</div>
+                        <textarea name="q30" placeholder="请在此输入您的意见或建议..."></textarea>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="button" class="nav-btn" id="prev6">上一部分</button>
+                        <button type="submit" class="nav-btn submit-btn">提交问卷</button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="footer">
+                <p>感谢您完成本次问卷！您的回答对我们至关重要。</p>
+                <p>本研究团队承诺，所有数据将以汇总形式呈现，绝不用于任何商业目的，并对您提供的信息严格保密。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 当前部分索引
+        let currentSection = 1;
+        const totalSections = 6;
+        
+        // 更新进度条和导航
+        function updateProgress() {
+            // 更新进度条
+            const progress = ((currentSection - 1) / totalSections) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+            document.getElementById('progress-percent').textContent = `${Math.round(progress)}%`;
+            document.getElementById('progress-text').textContent = `第${currentSection}部分/共${totalSections}部分`;
+            
+            // 更新部分显示
+            document.querySelectorAll('.section').forEach((section, index) => {
+                if (index + 1 === currentSection) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+        
+        // 导航按钮事件
+        document.getElementById('next1').addEventListener('click', () => {
+            if (validateSection(1)) {
+                currentSection = 2;
+                updateProgress();
+            }
+        });
+        
+        document.getElementById('next2').addEventListener('click', () => {
+            if (validateSection(2)) {
+                currentSection = 3;
+                updateProgress();
+            }
+        });
+        
+        document.getElementById('next3').addEventListener('click', () => {
+            if (validateSection(3)) {
+                currentSection = 4;
+                updateProgress();
+            }
+        });
+        
+        document.getElementById('next4').addEventListener('click', () => {
+            if (validateSection(4)) {
+                currentSection = 5;
+                updateProgress();
+            }
+        });
+        
+        document.getElementById('next5').addEventListener('click', () => {
+            if (validateSection(5)) {
+                currentSection = 6;
+                updateProgress();
+            }
+        });
+        
+        document.getElementById('prev2').addEventListener('click', () => {
+            currentSection = 1;
+            updateProgress();
+        });
+        
+        document.getElementById('prev3').addEventListener('click', () => {
+            currentSection = 2;
+            updateProgress();
+        });
+        
+        document.getElementById('prev4').addEventListener('click', () => {
+            currentSection = 3;
+            updateProgress();
+        });
+        
+        document.getElementById('prev5').addEventListener('click', () => {
+            currentSection = 4;
+            updateProgress();
+        });
+        
+        document.getElementById('prev6').addEventListener('click', () => {
+            currentSection = 5;
+            updateProgress();
+        });
+        
+        // 验证部分是否填写完整
+        function validateSection(sectionNum) {
+            const section = document.getElementById(`section${sectionNum}`);
+            const requiredInputs = section.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            requiredInputs.forEach(input => {
+                if (!input.value) {
+                    isValid = false;
+                    input.closest('.question').style.borderLeftColor = '#e74c3c';
+                } else {
+                    input.closest('.question').style.borderLeftColor = '#3498db';
+                }
+            });
+            
+            if (!isValid) {
+                alert('请完成本部分所有必答题后再继续。');
+            }
+            
+            return isValid;
+        }
+        
+        // 表单提交处理
+        document.getElementById('survey-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateSection(6)) {
+                alert('感谢您完成问卷！您的回答已提交。');
+                // 在实际应用中，这里应该将数据发送到服务器
+                // this.submit();
+            }
+        });
+        
+        // 初始化
+        updateProgress();
+    </script>
+</body>
+</html>
